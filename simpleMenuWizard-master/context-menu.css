@@ -1,0 +1,158 @@
+/*AGENT_SHEET*/
+
+/************************************/
+/****** simpleMenuWizard START ******/
+
+/**********************************************
+   Modify these files themselves to your needs.
+   Do not modify the following @import block.
+   **********************************************/
+
+/*** When right-clicking on... ***/
+@import url('./simpleMenuWizard/blank-context.css'); /* ...a blank area on a webpage                      */
+@import url('./simpleMenuWizard/select-context.css'); /* ...selected text or selected object               */
+@import url('./simpleMenuWizard/link-context.css'); /* ...a link                                         */
+@import url('./simpleMenuWizard/image-context.css'); /* ...an image                                       */
+@import url('./simpleMenuWizard/media-context.css'); /* ...media like audio or html5 video                */
+@import url('./simpleMenuWizard/input-context.css'); /* ...an input-field                                 */
+@import url('./simpleMenuWizard/frame-context.css'); /* ...an iframe                                      */
+@import url('./simpleMenuWizard/main-hamburger.css'); /* Leftclick on the hamburger menu on top right      */
+@import url('./simpleMenuWizard/main-menubar.css'); /* Leftclick on the main menubar (open with ALT key) */
+@import url('./simpleMenuWizard/newtab-containers.css'); /* ...the plus sign to open a new tab or container   */
+@import url('./simpleMenuWizard/sidebar-context.css'); /* ...items in bookmarks- or history sidebar         */
+@import url('./simpleMenuWizard/sidebar-header.css'); /* Leftclick on the sidebar header                   */
+@import url('./simpleMenuWizard/source-context.css'); /* ...a blank area when viewing source code          */
+@import url('./simpleMenuWizard/tab-context.css'); /* ...a tab                                          */
+@import url('./simpleMenuWizard/toolbar-context.css'); /* ...the toolbar or tabbar                          */
+@import url('./simpleMenuWizard/urlbar-context.css'); /* ...the addressbar                                 */
+
+/*** Options ***/
+
+/**********************************************************
+   How to activate or deactivate the following options:
+   Remove '/*' at the beginning of a line (not comment line) to activate the option
+   Add '/*' at the beginning of the line (not comment line) to deactivate the option
+   **********************************************************/
+
+/*** Hide all "Send <item> to Device" entries ***/
+@import url('./simpleMenuWizard/opt_noSendToDevice.css');
+
+/*** Hide all inactive menu items ***/
+/* #mainPopupSet menuitem[disabled="true"][id][data-l10n-id] { display: none !important; }
+
+/****** simpleMenuWizard END ******/
+/**********************************/
+
+/* Set the width of the context menu popup */
+
+#contentAreaContextMenu {
+  width: 14em;
+}
+
+/* Always show back/forward/reload icons */
+
+#context-navigation[hidden='true'],
+#context-reload[hidden='true']:has(+ #context-stop[disabled='true']),
+#context-stop[hidden='true']:not([disabled='true']) {
+  display: flex;
+}
+
+/* Remove left padding (space for icons) */
+
+#contentAreaContextMenu
+  > :not([type='checkbox'], [image^='moz-extension'])
+  > image.menu-icon:first-child {
+  display: none;
+}
+
+/* Control order of items */
+
+#context-navigation {
+  order: -100;
+}
+#context-openlinkintab {
+  order: -99;
+}
+#context-copylink {
+  order: -98;
+}
+#context-savelink {
+  order: -97;
+}
+
+#context-sep-sharing {
+  order: -90;
+}
+#context-viewimage {
+  order: -89;
+}
+#context-copyimage {
+  order: -88;
+}
+#context-copyimage-contents {
+  order: -87;
+}
+#context-saveimage {
+  order: -86;
+}
+
+#context-searchselect {
+  order: -79;
+}
+#context-context-copy {
+  order: -78;
+}
+
+/* Make extension items into inline icons */
+
+/* Make room at the bottom */
+#contentAreaContextMenu > #context-media-eme-separator {
+  padding-block: 12px !important;
+  visibility: hidden;
+}
+/* Use absolute positioning for the extension icons */
+#contentAreaContextMenu > :is(menu, menuitem)[image^='moz-extension'] {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 6px !important;
+  --w: 28px;
+  width: var(--w);
+  height: var(--w);
+  justify-content: center;
+
+  &:nth-last-child(2) {
+    right: calc(var(--w) * 1);
+  }
+  &:nth-last-child(3) {
+    right: calc(var(--w) * 2);
+  }
+  &:nth-last-child(4) {
+    right: calc(var(--w) * 3);
+  }
+  &:nth-last-child(5) {
+    right: calc(var(--w) * 4);
+  }
+  &:nth-last-child(6) {
+    right: calc(var(--w) * 5);
+  }
+  &:nth-last-child(7) {
+    right: calc(var(--w) * 6);
+  }
+  &:nth-last-child(8) {
+    right: calc(var(--w) * 7);
+  }
+  &:nth-last-child(9) {
+    right: calc(var(--w) * 8);
+  }
+
+  & > image {
+    margin: 0 !important;
+  }
+  & > .menu-text {
+    display: none;
+  }
+  &::after {
+    display: none !important;
+  }
+}

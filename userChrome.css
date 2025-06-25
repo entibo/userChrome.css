@@ -1,0 +1,69 @@
+@import url(simpleMenuWizard-master/context-menu.css);
+
+/* 
+  I need to remove the left vertical bar with
+  "AI chatbot", "Tabs from other devices", "History", "Bookmarks"
+  and extensions
+*/
+
+#sidebar-main {
+  display: none;
+  width: 0;
+}
+
+/**/
+
+#TabsToolbar {
+  display: none !important;
+  visibility: collapse !important;
+  height: 0 !important;
+}
+
+/* 
+    Any reference to #TabsToolbar
+    below is likely redundant (not tested)
+    test
+*/
+
+#main-window[tabsintitlebar='true']:not([extradragspace='true'])
+  #TabsToolbar
+  > .toolbar-items {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#main-window:not([tabsintitlebar='true']) #TabsToolbar {
+  visibility: collapse !important;
+  display: none !important;
+}
+
+/* Hide horizontal tabs at the top of the window */
+#tabbrowser-tabs {
+  visibility: collapse !important;
+}
+
+/* Adding empty space for buttons */
+#nav-bar {
+  /* margin-right: 70px; */
+}
+
+/* Move minimize/restore/close buttons to empty space */
+#TabsToolbar > .titlebar-buttonbox-container {
+  display: block;
+  position: absolute;
+  top: 6px;
+  right: 0px;
+  /* Remove them */
+  display: none;
+  visibility: collapse !important;
+  pointer-events: none;
+}
+
+/* Hide the "Tree Style Tab" header at the top of the sidebar */
+#sidebar-box #sidebar-header {
+  display: none;
+}
+
+#sidebar {
+  min-width: 32px !important;
+}
