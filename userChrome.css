@@ -1,6 +1,14 @@
 @import url(simpleMenuWizard-master/context-menu.css);
 
 /* 
+  Remove the header at the top of the sidebar that displays
+  a name such as "Sidebery" or "Bookmarks" and an X icon 
+*/
+#sidebar-panel-header {
+  display: none;
+}
+
+/* 
   I need to remove the left vertical bar with
   "AI chatbot", "Tabs from other devices", "History", "Bookmarks"
   and extensions
