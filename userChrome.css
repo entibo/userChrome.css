@@ -1,5 +1,11 @@
 @import url(simpleMenuWizard-master/context-menu.css);
 
+
+/*  */
+#sidebar {
+  border-radius: 0;
+}
+
 /* 
   Remove the header at the top of the sidebar that displays
   a name such as "Sidebery" or "Bookmarks" and an X icon 
