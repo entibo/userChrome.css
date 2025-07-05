@@ -1,5 +1,12 @@
 @import url(simpleMenuWizard-master/context-menu.css);
+@import url(./urlbar.css);
+@import url(./navbar-bottom.css);
 
+
+/* Hide the "File, Edit, View..." menu toolbar that shows up when pressing ALT */
+#toolbar-menubar {
+  display: none;
+}
 
 /*  */
 #sidebar {

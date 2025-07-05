@@ -1,0 +1,37 @@
+#navigator-toolbox {
+  order: 1 !important;
+  border-bottom: none !important;
+}
+
+#urlbar {
+  top: initial !important;
+  bottom: 0 !important;
+  display: flex !important;
+  flex-direction: column-reverse !important;
+
+  /* Issue where width and margi nchanges when focused */
+  /* height: var(--urlbar-height) !important; */
+  width: var(--urlbar-width) !important;
+  margin: 0 !important;
+}
+
+#urlbar-background {
+  border-bottom: none !important;
+  inset: -5px !important;
+}
+#urlbar:not([breakout-extend='true']) > #urlbar-background {
+  display: none !important;
+}
+
+/* Make areas as large as possible to
+   allow clicking any element on the edge of the screen */
+
+#urlbar > .urlbar-input-container {
+  padding: 0 !important;
+  border: none !important;
+  min-height: var(--urlbar-min-height);
+}
+
+#urlbar-container {
+  padding-block: 0 !important;
+}

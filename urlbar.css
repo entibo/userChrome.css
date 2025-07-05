@@ -1,0 +1,40 @@
+#urlbar-container {
+  --urlbar-margin-inline: 15px;
+}
+
+/* Hide the search engine dropdown button */
+#urlbar-searchmode-switcher {
+  /* display: none !important; */
+  opacity: 0;
+  width: 0;
+  visibility: hidden;
+}
+/* It had margin-inline-end, so restore that gap by adding
+   to the parent's padding-inline-start */
+/* #urlbar > .urlbar-input-container {
+  margin-inline-start: calc(
+    var(--urlbar-container-padding) +
+      var(--urlbar-searchmodeswitcher-margin-inline-end)
+  ) !important;
+} */
+
+/* Little shield, doesn't provide any value that i can tell */
+#tracking-protection-icon-container {
+  display: none !important;
+}
+
+/* PAGE ACTIONS */
+
+/* Hide reader mode button */
+#reader-mode-button {
+  display: none !important;
+}
+
+/* Hide bookmark button */
+#star-button-box {
+  display: none !important;
+}
+
+/* --- */
+
+
