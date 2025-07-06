@@ -44,18 +44,144 @@
 /**********************************/
 
 /* Set the width of the context menu popup */
-
 #contentAreaContextMenu {
-  width: 14em;
+  width: 21em;
 }
 
-/* Always show back/forward/reload icons */
+/* Offset the popup so that the first item is right under the cursor */
+#contentAreaContextMenu {
+  margin-left: -60px;
+  margin-top: -25px;
+}
 
-#context-navigation[hidden='true'],
+/* 
+  Copy email
+  Link    Copy URL         Save
+  Image   Copy URL  Copy   Save
+  Text    Copy      Paste  Delete
+*/
+
+/* Labels */
+#context-openlinkintab > .menu-text::before {
+  content: 'Link';
+}
+#context-viewimage > .menu-text::before {
+  content: 'Image';
+}
+#context-searchselect > .menu-text::before {
+  content: 'Text';
+}
+#context-copylink > .menu-text::before {
+  content: 'Copy URL';
+}
+#context-copyimage > .menu-text::before {
+  content: 'Copy URL';
+}
+#context-copy > .menu-text::before {
+  content: 'Copy';
+}
+#context-copyimage-contents > .menu-text::before {
+  content: 'Copy';
+}
+#context-savelink > .menu-text::before {
+  content: 'Save';
+}
+#context-saveimage > .menu-text::before {
+  content: 'Save';
+}
+
+/* Columns */
+#context-openlinkintab,
+#context-viewimage,
+#context-searchselect {
+  width: 24%;
+  & > .menu-text::before {
+    text-overflow: clip !important;
+  }
+}
+#context-copylink,
+#context-copyimage,
+#context-copy {
+  width: 24%;
+  & > .menu-text::before {
+    text-overflow: clip !important;
+  }
+  position: absolute;
+  left: 25%;
+}
+#context-copyimage-contents,
+#context-paste {
+  width: 24%;
+  & > .menu-text::before {
+    text-overflow: clip !important;
+  }
+  position: absolute;
+  left: 50%;
+}
+#context-savelink,
+#context-saveimage,
+#context-delete {
+  width: 24%;
+  & > .menu-text::before {
+    text-overflow: clip !important;
+  }
+  position: absolute;
+  left: 75%;
+}
+
+/* Conditionally move things to 2nd or 3rd row */
+#context-copyimage,
+#context-copyimage-contents,
+#context-saveimage,
+#context-copy,
+#context-paste,
+#context-delete {
+  #contentAreaContextMenu:has(
+      :is(#context-copylink, #context-copyemail):not([hidden])
+    )
+    > & {
+    translate: 0 100%;
+  }
+}
+#context-copy,
+#context-paste,
+#context-delete {
+  #contentAreaContextMenu:has(
+      :is(#context-copylink, #context-copyemail, #context-copyimage):not(
+          [hidden]
+        )
+    )
+    > & {
+    translate: 0 100%;
+  }
+  #contentAreaContextMenu:has(
+      :is(#context-copylink, #context-copyemail):not([hidden])
+    ):has(#context-copyimage:not([hidden]))
+    > & {
+    translate: 0 200%;
+  }
+}
+
+/* Show the text search when text items are present */
+#context-copy:not([hidden]) ~ #context-searchselect[hidden] {
+  display: block;
+  color: var(--text-color-disabled);
+  pointer-events: none;
+}
+
+/* --- */
+
+/* Never show back/forward/reload icons */
+#context-navigation,
+#context-sep-navigation {
+  display: none !important;
+}
+/* Always show back/forward/reload icons */
+/* #context-navigation[hidden='true'],
 #context-reload[hidden='true']:has(+ #context-stop[disabled='true']),
 #context-stop[hidden='true']:not([disabled='true']) {
   display: flex;
-}
+} */
 
 /* Remove left padding (space for icons) */
 
@@ -68,8 +194,13 @@
 /* Control order of items */
 
 #context-navigation {
-  order: -100;
+  order: -500;
 }
+
+#context-copyemail {
+  order: -105;
+}
+
 #context-openlinkintab {
   order: -99;
 }
@@ -80,9 +211,6 @@
   order: -97;
 }
 
-#context-sep-sharing {
-  order: -90;
-}
 #context-viewimage {
   order: -89;
 }
@@ -107,8 +235,9 @@
 
 /* Make room at the bottom */
 #contentAreaContextMenu > #context-media-eme-separator {
-  padding-block: 12px !important;
-  visibility: hidden;
+  /* padding-block: 12px !important; */
+  /* visibility: hidden; */
+  display: none;
 }
 /* Use absolute positioning for the extension icons */
 #contentAreaContextMenu > :is(menu, menuitem)[image^='moz-extension'] {
