@@ -2,6 +2,11 @@
 @import url(./urlbar.css);
 @import url(./navbar-bottom.css);
 
+/* Allow dragging the window from the "100%" area */
+#zoom-reset-button,
+#zoom-controls {
+  -moz-window-dragging: drag !important;
+}
 
 /* Hide the "File, Edit, View..." menu toolbar that shows up when pressing ALT */
 #toolbar-menubar {
